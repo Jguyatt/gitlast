@@ -4,26 +4,18 @@ import Image from 'next/image';
 
 export default function Footer() {
   return (
-    <footer className="bg-black text-white py-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          {/* Company Info */}
-          <div className="col-span-1 md:col-span-2">
-            <div className="flex items-center space-x-3 mb-6">
-              <Image
-                src="/twinlyremove.png"
-                alt="Twinly Logo"
-                width={40}
-                height={40}
-                className="rounded-lg"
-              />
-              <span className="text-2xl font-bold">Twinly</span>
+    <footer className="bg-black py-16">
+      <div className="max-w-6xl mx-auto px-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* Left: Brand info */}
+          <div className="space-y-4">
+            <div className="flex items-center gap-3">
+              <Image src="/twinlyremove.png" alt="Twinly" width={32} height={32} />
+              <span className="text-xl font-semibold text-white">Twinly</span>
             </div>
-            <p className="text-gray-400 mb-6 max-w-md">
-              Your AI communication twin that helps you stay productive, authentic,
-              and efficient in all your digital interactions.
+            <p className="text-gray-400 text-sm leading-relaxed">
+              Your AI communication twin that helps you stay productive, authentic, and efficient in all your digital interactions.
             </p>
-
             <div className="flex space-x-4">
               <a href="#" className="text-gray-400 hover:text-white transition-colors">
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -37,44 +29,43 @@ export default function Footer() {
               </a>
             </div>
           </div>
-
-          {/* Product Links */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Product</h3>
-            <ul className="space-y-3">
-              <li><a href="/#features" className="text-gray-400 hover:text-white transition-colors">Features</a></li>
-              <li><a href="/pricing" className="text-gray-400 hover:text-white transition-colors">Pricing</a></li>
-              <li><a href="/#download" className="text-gray-400 hover:text-white transition-colors">Download</a></li>
-              <li><a href="/#api" className="text-gray-400 hover:text-white transition-colors">API</a></li>
-              <li><a href="/#integrations" className="text-gray-400 hover:text-white transition-colors">Integrations</a></li>
-            </ul>
+          
+          {/* Middle: Quick Links */}
+          <div className="space-y-4">
+            <h3 className="text-white font-semibold">Quick Links</h3>
+            <div className="space-y-2">
+              <a href="/pricing" className="block text-gray-400 hover:text-white transition-colors">Pricing</a>
+              <a href="/enterprise" className="block text-gray-400 hover:text-white transition-colors">Enterprise</a>
+              <a href="/faq" className="block text-gray-400 hover:text-white transition-colors">FAQ</a>
+              <a href="/security" className="block text-gray-400 hover:text-white transition-colors">Security</a>
+            </div>
           </div>
-
-          {/* Company Links */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Company</h3>
-            <ul className="space-y-3">
-              <li><a href="/#about" className="text-gray-400 hover:text-white transition-colors">About</a></li>
-              <li><a href="/#blog" className="text-gray-400 hover:text-white transition-colors">Blog</a></li>
-              <li><a href="/#careers" className="text-gray-400 hover:text-white transition-colors">Careers</a></li>
-              <li><a href="/#press" className="text-gray-400 hover:text-white transition-colors">Press</a></li>
-              <li><a href="/#contact" className="text-gray-400 hover:text-white transition-colors">Contact</a></li>
-            </ul>
+          
+          {/* Right: Support */}
+          <div className="space-y-4">
+            <h3 className="text-white font-semibold">Support</h3>
+            <div className="space-y-2">
+              <a href="mailto:support@twinly.ai" className="block text-gray-400 hover:text-white transition-colors">Contact Support</a>
+              <a href="/privacy" className="block text-gray-400 hover:text-white transition-colors">Privacy Policy</a>
+              <a href="/terms" className="block text-gray-400 hover:text-white transition-colors">Terms of Service</a>
+              <a href="/gdpr" className="block text-gray-400 hover:text-white transition-colors">GDPR</a>
+            </div>
           </div>
         </div>
-
-        {/* Bottom row */}
-        <div className="border-t border-gray-800 mt-12 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="flex flex-wrap gap-6 mb-4 md:mb-0">
-              <a href="/privacy" className="text-gray-400 hover:text-white transition-colors text-sm">Privacy Policy</a>
-              <a href="/terms" className="text-gray-400 hover:text-white transition-colors text-sm">Terms of Service</a>
-              <a href="/cookies" className="text-gray-400 hover:text-white transition-colors text-sm">Cookie Policy</a>
-              <a href="/gdpr" className="text-gray-400 hover:text-white transition-colors text-sm">GDPR</a>
-              <a href="/security" className="text-gray-400 hover:text-white transition-colors text-sm">Security</a>
-            </div>
-            <div className="text-gray-400 text-sm">
-              © {new Date().getFullYear()} Twinly. All rights reserved.
+        
+        {/* Bottom bar */}
+        <div className="mt-12 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
+          <div className="flex flex-wrap gap-6 text-sm text-gray-400">
+            <a href="/cookies" className="hover:text-white transition-colors">Cookie Policy</a>
+          </div>
+          <div className="flex flex-col sm:flex-row items-center gap-4">
+            <p className="text-sm text-gray-400">
+              © 2025 Twinly. All rights reserved.
+            </p>
+            <div className="flex items-center gap-4 text-xs text-gray-400">
+              <span>GDPR Compliant</span>
+              <span>•</span>
+              <span>SOC 2 Type II Compliant</span>
             </div>
           </div>
         </div>

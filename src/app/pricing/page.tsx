@@ -129,7 +129,8 @@ function ShinyLink({ href, children }: { href: string; children: React.ReactNode
 
 export default function PricingPage() {
  const [isSalesPopupOpen, setIsSalesPopupOpen] = useState(false);
- const [billing, setBilling] = useState<Billing>('monthly');
+ // Update the default billing state to 'yearly'
+ const [billing, setBilling] = useState<Billing>('yearly');
 
 
  // Prices

@@ -65,15 +65,7 @@ export default function TopNav({ active, ctaLabel, ctaHref, onCtaClick }: Props)
             </a>
           </div>
 
-          {/* Right: CTA */}
-          <div className="absolute right-2 sm:right-3 md:right-6 lg:right-8 top-1/2 -translate-y-1/2 flex items-center space-x-3 pl-2">
-            <button
-              onClick={onCtaClick}
-              className="rounded-full border border-white/30 bg-white px-2 sm:px-3 md:px-4 py-1 sm:py-1.5 text-black font-semibold transition-colors hover:bg-gray-100 h-6 sm:h-7 md:h-9 text-xs sm:text-sm md:text-base"
-            >
-              {ctaLabel}
-            </button>
-          </div>
+          {/* Right: CTA - REMOVED */}
         </div>
       </div>
     </nav>

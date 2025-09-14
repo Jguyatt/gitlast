@@ -232,7 +232,7 @@ export default function PricingPage() {
             <ShinyButton>Get for Windows</ShinyButton>
             <Features
               items={[
-                'All features (limited)',
+                '20 emails per month',
                 'Models: GPT-4',
                 'Custom prompts & instructions',
                 'Conversation dashboard & history',
@@ -252,7 +252,7 @@ export default function PricingPage() {
             <a href={subscribeHref}><ShinyButton>{subscribeLabel}</ShinyButton></a>
             <Features
               items={[
-                'All features (full access)',
+                'Unlimited emails & responses',
                 'Models: GPT-5 + latest',
                 'Unlimited responses / day',
                 'Standard support',

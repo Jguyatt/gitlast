@@ -40,36 +40,36 @@ export default function TopNav({ active, ctaLabel, ctaHref, onCtaClick }: Props)
         }`}
       >
         <div className="relative h-10">
-          {/* Left: logo - smaller on mobile, same on desktop */}
+          {/* Left: logo - smaller on mobile to make room */}
           <a
             href="/"
-            className="absolute left-4 md:left-6 lg:left-8 top-1/2 -translate-y-1/2 h-12 flex items-center gap-2 md:gap-3 text-base text-white"
+            className="absolute left-3 md:left-6 lg:left-8 top-1/2 -translate-y-1/2 h-12 flex items-center gap-1 md:gap-3 text-base text-white"
           >
-            <Image src="/twinlyremove.png" alt="Twinly Logo" width={32} height={32} className="w-8 h-8 md:w-10 md:h-10" />
-            <span className="font-semibold text-base md:text-lg leading-none">Twinly</span>
+            <Image src="/twinlyremove.png" alt="Twinly Logo" width={24} height={24} className="w-6 h-6 md:w-10 md:h-10" />
+            <span className="font-semibold text-sm md:text-lg leading-none">Twinly</span>
           </a>
 
-          {/* Center: links - hidden on mobile, same on desktop */}
-          <div className="absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 items-center space-x-6 md:space-x-8 lg:flex">
+          {/* Center: links - show on mobile with smaller spacing */}
+          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center space-x-4 md:space-x-8">
             <a
               href="/pricing"
-              className={`${linkBase} ${active === 'pricing' ? activeLink : ''}`}
+              className={`${linkBase} text-sm md:text-base ${active === 'pricing' ? activeLink : ''}`}
             >
               Pricing
             </a>
             <a
               href="/enterprise"
-              className={`${linkBase} ${active === 'enterprise' ? activeLink : ''}`}
+              className={`${linkBase} text-sm md:text-base ${active === 'enterprise' ? activeLink : ''}`}
             >
               Enterprise
             </a>
           </div>
 
-          {/* Right: CTA - smaller on mobile, same on desktop */}
-          <div className="absolute right-4 md:right-6 lg:right-8 top-1/2 -translate-y-1/2 flex items-center space-x-3 pl-4">
+          {/* Right: CTA - smaller on mobile */}
+          <div className="absolute right-3 md:right-6 lg:right-8 top-1/2 -translate-y-1/2 flex items-center space-x-3 pl-2">
             <button
               onClick={onCtaClick}
-              className="rounded-full border border-white/30 bg-white px-3 md:px-4 py-1.5 text-black font-semibold transition-colors hover:bg-gray-100 h-8 md:h-9 text-sm md:text-base"
+              className="rounded-full border border-white/30 bg-white px-2 md:px-4 py-1.5 text-black font-semibold transition-colors hover:bg-gray-100 h-7 md:h-9 text-xs md:text-base"
             >
               {ctaLabel}
             </button>

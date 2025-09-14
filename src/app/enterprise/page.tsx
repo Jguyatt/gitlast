@@ -103,27 +103,16 @@ export default function EnterprisePage() {
     <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-4 sm:mb-6 md:mb-8">
       Enterprise
     </h1>
-    <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/80 mb-8 sm:mb-12 md:mb-16 max-w-4xl mx-auto">
+    <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/80 mb-2 sm:mb-3 md:mb-4 max-w-4xl mx-auto">
       Everything in Pro, plus security, control, and onboarding for teams at scale.
     </p>
     
-    {/* Buttons */}
-    <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center">
-      <button className="w-full sm:w-auto bg-white text-black px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-base sm:text-lg hover:bg-gray-100 transition-colors">
-        Estimate ROI
-      </button>
-      <button className="w-full sm:w-auto bg-transparent border border-white/30 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-base sm:text-lg hover:bg-white/10 transition-colors">
-        Compare features
-      </button>
-      <button className="w-full sm:w-auto bg-transparent border border-white/30 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-base sm:text-lg hover:bg-white/10 transition-colors">
-        Contact sales
-      </button>
-    </div>
+    {/* Removed the three buttons section */}
   </div>
 </section>
 
       {/* ROI Calculator */}
-      <section id="roi" className="mx-auto mt-12 max-w-6xl px-4">
+      <section id="roi" className="mx-auto mt-2 sm:mt-3 md:mt-4 max-w-6xl px-4">
         <div className="rounded-3xl border border-white/15 bg-white/[0.06] p-6 shadow-[0_25px_60px_-20px_rgba(0,0,0,.7)]">
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
             {/* Controls */}

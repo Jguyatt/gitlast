@@ -63,13 +63,38 @@ export default function SalesPopup({ isOpen, onClose }: Props) {
     setErrors({});
   };
 
+  // Update the handleSubmit function to send emails to tryranklyai@gmail.com
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
     setSubmitting(true);
-    await new Promise((r) => setTimeout(r, 850));
-    setSubmitting(false);
-    setDone(true);
+    
+    try {
+      const response = await fetch('/api/sales-inquiry', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          company,
+          teamSize: Number(teamSize),
+          message,
+        }),
+      });
+
+      if (response.ok) {
+        setDone(true);
+      } else {
+        throw new Error('Failed to send inquiry');
+      }
+    } catch (error) {
+      console.error('Error sending inquiry:', error);
+      setErrors({ submit: 'Failed to send inquiry. Please try again.' });
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const closeAll = () => {

@@ -98,40 +98,29 @@ export default function EnterprisePage() {
       </nav>
 
       {/* Hero */}
-      <header className="mx-auto max-w-6xl px-4 pt-32 text-center">
-        <Reveal direction="down">
-          <h1 className="text-5xl sm:text-6xl font-extrabold tracking-tight text-white drop-shadow-[0_8px_30px_rgba(0,0,0,0.55)]">
-            Enterprise
-          </h1>
-        </Reveal>
-        <Reveal direction="up" delay={0.08}>
-          <p className="mx-auto mt-4 max-w-2xl text-white/80">
-            Everything in Pro, plus security, control, and onboarding for teams at scale.
-          </p>
-        </Reveal>
-        <Reveal direction="scale" delay={0.16}>
-          <div className="mt-6 flex items-center justify-center gap-3">
-            <a
-              href="#roi"
-              className="rounded-xl border border-white/20 bg-white px-5 py-2.5 text-black font-semibold hover:opacity-90"
-            >
-              Estimate ROI
-            </a>
-            <a
-              href="#compare"
-              className="rounded-xl border border-white/20 px-5 py-2.5 font-semibold hover:bg-white/10"
-            >
-              Compare features
-            </a>
-            <button
-              onClick={() => setIsSalesOpen(true)}
-              className="rounded-xl border border-white/20 px-5 py-2.5 font-semibold hover:bg-white/10"
-            >
-              Contact sales
-            </button>
-          </div>
-        </Reveal>
-      </header>
+      <section className="py-16 sm:py-20 md:py-24 lg:py-32 px-4 sm:px-6 lg:px-8">
+  <div className="max-w-7xl mx-auto text-center">
+    <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-4 sm:mb-6 md:mb-8">
+      Enterprise
+    </h1>
+    <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/80 mb-8 sm:mb-12 md:mb-16 max-w-4xl mx-auto">
+      Everything in Pro, plus security, control, and onboarding for teams at scale.
+    </p>
+    
+    {/* Buttons */}
+    <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center">
+      <button className="w-full sm:w-auto bg-white text-black px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-base sm:text-lg hover:bg-gray-100 transition-colors">
+        Estimate ROI
+      </button>
+      <button className="w-full sm:w-auto bg-transparent border border-white/30 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-base sm:text-lg hover:bg-white/10 transition-colors">
+        Compare features
+      </button>
+      <button className="w-full sm:w-auto bg-transparent border border-white/30 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-base sm:text-lg hover:bg-white/10 transition-colors">
+        Contact sales
+      </button>
+    </div>
+  </div>
+</section>
 
       {/* ROI Calculator */}
       <section id="roi" className="mx-auto mt-12 max-w-6xl px-4">

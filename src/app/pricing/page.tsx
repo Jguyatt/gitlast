@@ -155,14 +155,14 @@ export default function PricingPage() {
      
     
      {/* Hero */}
-     <header className="mx-auto max-w-6xl px-4 pt-32 text-center">
+     <header className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-24 sm:pt-28 md:pt-32 text-center">
        <Reveal direction="down">
-         <h1 className="mx-auto flex items-center justify-center gap-3 text-5xl font-bold tracking-tight sm:text-6xl">
+         <h1 className="mx-auto flex items-center justify-center gap-3 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
            <span>Choose the right plan for you.</span>
          </h1>
        </Reveal>
        <Reveal delay={0.05}>
-         <p className="mx-auto mt-4 max-w-2xl">
+         <p className="mx-auto mt-4 max-w-4xl text-base sm:text-lg md:text-xl">
            Whether you're using Twinly for work, school, client communication, or just curious, it's free to use.
          </p>
        </Reveal>
@@ -170,53 +170,37 @@ export default function PricingPage() {
 
        {/* Billing Toggle */}
        <Reveal delay={0.1}>
-         <div className="mt-7 flex items-center justify-center gap-4 select-none">
+         <div className="mt-6 sm:mt-7 flex items-center justify-center gap-4 select-none">
            <button
              type="button"
              onClick={() => setBilling('monthly')}
-             className={`text-sm font-semibold whitespace-nowrap transition ${
+             className={`text-sm sm:text-base font-semibold whitespace-nowrap transition ${
                billing === 'monthly' ? 'text-white' : 'text-white/60 hover:text-white'
              }`}
            >
              Monthly
            </button>
-
-
+           {/* Toggle switch */}
            <button
              type="button"
-             role="switch"
-             aria-checked={billing === 'yearly'}
-             aria-label="Toggle billing period"
              onClick={() => setBilling(billing === 'monthly' ? 'yearly' : 'monthly')}
-             className={`relative h-8 w-14 overflow-hidden rounded-full border border-white/25
-                         transition-colors duration-300 ease-out
-                         ${billing === 'yearly' ? 'bg-white/60' : 'bg-white/20'}
-                         focus:outline-none focus:ring-2 focus:ring-white/60`}
+             className="relative inline-flex h-6 w-11 items-center rounded-full bg-white/20 transition-colors focus:outline-none focus:ring-2 focus:ring-white/40 focus:ring-offset-2 focus:ring-offset-transparent"
            >
              <span
-               className={`absolute left-1 top-1 h-6 w-6 rounded-full bg-white shadow
-                           transition-transform duration-300 ease-out will-change-transform
-                           ${billing === 'yearly' ? 'translate-x-7' : 'translate-x-0'}`}
+               className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
+                 billing === 'monthly' ? 'translate-x-1' : 'translate-x-6'
+               }`}
              />
            </button>
-
-
            <button
              type="button"
              onClick={() => setBilling('yearly')}
-             className={`text-sm font-semibold whitespace-nowrap transition ${
+             className={`text-sm sm:text-base font-semibold whitespace-nowrap transition ${
                billing === 'yearly' ? 'text-white' : 'text-white/60 hover:text-white'
              }`}
            >
              Annually
            </button>
-
-
-           {billing === 'yearly' && (
-             <span className="ml-2 whitespace-nowrap rounded-full border border-white/25 bg-white/10 px-2 py-1 text-xs text-white">
-               Save {savePct}%
-             </span>
-           )}
          </div>
        </Reveal>
      </header>

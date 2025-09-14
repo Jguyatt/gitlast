@@ -121,11 +121,11 @@ export default function PricingPage() {
   const [billing, setBilling] = useState<Billing>('monthly');
 
   // Prices
-  const PRO_MONTHLY = 20;
-  const PRO_YEARLY = 100;
+  const PRO_MONTHLY = 14.99;
+  const PRO_YEARLY = 7.99;
   const proPrice = billing === 'monthly' ? PRO_MONTHLY : PRO_YEARLY;
-  const proSuffix = billing === 'monthly' ? '/ month' : '/ year';
-  const savePct = 100 - Math.round((PRO_YEARLY / (PRO_MONTHLY * 12)) * 100);
+  const proSuffix = billing === 'monthly' ? '/ month' : '/ month';
+  const savePct = 100 - Math.round((PRO_YEARLY / (PRO_MONTHLY)) * 100);
 
   const subscribeHref =
     billing === 'yearly' ? '/checkout?plan=pro-yearly' : '/checkout?plan=pro-monthly';
@@ -149,7 +149,7 @@ export default function PricingPage() {
             <a href="/enterprise" className="hover:opacity-90">Enterprise</a>
           </div>
           <div className="absolute right-5 top-1/2 -translate-y-1/2 flex items-center gap-3">
-            <ShinyLink href="#download">Get Started for Free</ShinyLink>
+          <ShinyLink href="#download">Get Started for Free</ShinyLink>
           </div>
         </div>
       </nav>

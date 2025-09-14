@@ -63,7 +63,7 @@ Submitted at: ${new Date().toLocaleString()}
     try {
       // For now, we'll use a simple approach - you can set up Gmail later
       // This will work with any SMTP service
-      const transporter = nodemailer.createTransporter({
+      const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
           user: 'mohid2007zk@gmail.com',

@@ -30,7 +30,7 @@ export default function TopNav({ active, ctaLabel, ctaHref, onCtaClick }: Props)
   return (
     <nav
       aria-label="Primary"
-      className="fixed top-4 left-1/2 z-50 -translate-x-1/2 w-[98vw]"
+      className="fixed top-4 left-1/2 z-50 -translate-x-1/2 w-[95vw] md:w-[98vw]"
     >
       <div
         className={`rounded-full pl-0 pr-0 py-3 border transition-all duration-500 ease-out
@@ -40,17 +40,17 @@ export default function TopNav({ active, ctaLabel, ctaHref, onCtaClick }: Props)
         }`}
       >
         <div className="relative h-10">
-          {/* Left: logo */}
+          {/* Left: logo - smaller on mobile, same on desktop */}
           <a
             href="/"
-            className="absolute left-6 sm:left-8 md:left-10 lg:left-12 top-1/2 -translate-y-1/2 h-12 flex items-center gap-3 text-base text-white"
+            className="absolute left-4 md:left-6 lg:left-8 top-1/2 -translate-y-1/2 h-12 flex items-center gap-2 md:gap-3 text-base text-white"
           >
-            <Image src="/twinlyremove.png" alt="Twinly Logo" width={40} height={40} className="w-10 h-10" />
-            <span className="font-semibold text-lg leading-none">Twinly</span>
+            <Image src="/twinlyremove.png" alt="Twinly Logo" width={32} height={32} className="w-8 h-8 md:w-10 md:h-10" />
+            <span className="font-semibold text-base md:text-lg leading-none">Twinly</span>
           </a>
 
-          {/* Center: links */}
-          <div className="absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 items-center space-x-8 md:flex">
+          {/* Center: links - hidden on mobile, same on desktop */}
+          <div className="absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 items-center space-x-6 md:space-x-8 lg:flex">
             <a
               href="/pricing"
               className={`${linkBase} ${active === 'pricing' ? activeLink : ''}`}
@@ -65,23 +65,14 @@ export default function TopNav({ active, ctaLabel, ctaHref, onCtaClick }: Props)
             </a>
           </div>
 
-          {/* Right: CTA (link or button) */}
-          <div className="absolute right-6 sm:right-8 md:right-10 lg:right-12 top-1/2 -translate-y-1/2 flex items-center space-x-3 pl-4">
-            {onCtaClick ? (
-              <button
-                onClick={onCtaClick}
-                className="rounded-full border border-white/30 bg-white px-4 py-1.5 text-black font-semibold transition-colors hover:bg-gray-100 h-9"
-              >
-                {ctaLabel}
-              </button>
-            ) : (
-              <a
-                href={ctaHref ?? '#'}
-                className="rounded-full border border-white/30 bg-white px-4 py-1.5 text-black font-semibold transition-colors hover:bg-gray-100 h-9"
-              >
-                {ctaLabel}
-              </a>
-            )}
+          {/* Right: CTA - smaller on mobile, same on desktop */}
+          <div className="absolute right-4 md:right-6 lg:right-8 top-1/2 -translate-y-1/2 flex items-center space-x-3 pl-4">
+            <button
+              onClick={onCtaClick}
+              className="rounded-full border border-white/30 bg-white px-3 md:px-4 py-1.5 text-black font-semibold transition-colors hover:bg-gray-100 h-8 md:h-9 text-sm md:text-base"
+            >
+              {ctaLabel}
+            </button>
           </div>
         </div>
       </div>

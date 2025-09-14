@@ -439,6 +439,76 @@ export default function Home() {
         </div>
       </section>
 
+      {/* FAQ */}
+      <section className="py-32 bg-black relative overflow-hidden">
+        {/* Background gradient */}
+        <div className="absolute inset-0 bg-gradient-to-b from-gray-900/20 via-black to-black" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.05)_0%,transparent_70%)]" />
+        
+        <div className="relative z-10 max-w-5xl mx-auto px-6">
+          <div className="text-center mb-20">
+            <h2 className="text-5xl md:text-6xl font-extrabold text-white mb-6 tracking-tight">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-gray-400 text-xl max-w-2xl mx-auto">
+              Everything you need to know about Twinly
+            </p>
+          </div>
+          
+          <div className="space-y-4">
+            {/* FAQ Item 1 */}
+            <div className="group bg-gray-900/50 backdrop-blur-sm rounded-3xl p-8 border border-gray-800/50 hover:border-gray-700/50 transition-all duration-300 hover:bg-gray-900/70">
+              <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-white/90 transition-colors">
+                What is Twinly?
+              </h3>
+              <p className="text-gray-300 text-lg leading-relaxed">
+                Twinly is your AI communication twin that helps you stay productive, authentic, and efficient in all your digital interactions. It assists with emails, messages, and other communication tasks.
+              </p>
+            </div>
+
+            {/* FAQ Item 2 */}
+            <div className="group bg-gray-900/50 backdrop-blur-sm rounded-3xl p-8 border border-gray-800/50 hover:border-gray-700/50 transition-all duration-300 hover:bg-gray-900/70">
+              <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-white/90 transition-colors">
+                How does the free version work?
+              </h3>
+              <p className="text-gray-300 text-lg leading-relaxed">
+                The free version includes 20 emails per month, giving you a taste of Twinly's capabilities. You can upgrade to our Pro plan for unlimited usage.
+              </p>
+            </div>
+
+            {/* FAQ Item 3 */}
+            <div className="group bg-gray-900/50 backdrop-blur-sm rounded-3xl p-8 border border-gray-800/50 hover:border-gray-700/50 transition-all duration-300 hover:bg-gray-900/70">
+              <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-white/90 transition-colors">
+                Is my data secure?
+              </h3>
+              <p className="text-gray-300 text-lg leading-relaxed">
+                Yes, we take data security seriously. All your communications are encrypted and we follow industry-standard security practices to protect your information.
+              </p>
+            </div>
+
+            {/* FAQ Item 4 */}
+            <div className="group bg-gray-900/50 backdrop-blur-sm rounded-3xl p-8 border border-gray-800/50 hover:border-gray-700/50 transition-all duration-300 hover:bg-gray-900/70">
+              <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-white/90 transition-colors">
+                Can I use Twinly on multiple devices?
+              </h3>
+              <p className="text-gray-300 text-lg leading-relaxed">
+                Yes, Twinly works across all your devices. Download the app for Windows and Mac, and access your AI twin wherever you are.
+              </p>
+            </div>
+
+            {/* FAQ Item 5 */}
+            <div className="group bg-gray-900/50 backdrop-blur-sm rounded-3xl p-8 border border-gray-800/50 hover:border-gray-700/50 transition-all duration-300 hover:bg-gray-900/70">
+              <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-white/90 transition-colors">
+                How do I get started?
+              </h3>
+              <p className="text-gray-300 text-lg leading-relaxed">
+                Simply download the app for your platform (Windows or Mac), create an account, and start using your AI communication twin. No credit card required for the free version.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
       <Footer />
 

@@ -87,7 +87,7 @@ export default function EnterprisePage() {
   const fmtNumber = (n: number) => new Intl.NumberFormat('en-US').format(n);
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black">
+    <main className="min-h-screen bg-black text-white">
       {/* Nav */}
       <nav>
       <TopNav

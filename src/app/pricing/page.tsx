@@ -146,29 +146,14 @@ export default function PricingPage() {
 
 
  return (
-   <main className="pricing-page min-h-screen bg-black text-white">
-     <TopNav active="pricing" ctaLabel="Get Started" ctaHref="#get-started" />
-     {/* Nav (no Help Center / no Sign in) */}
-     <nav
-       aria-label="Primary"
-       className="fixed top-4 left-1/2 z-50 -translate-x-1/2 w-[98vw] rounded-full border border-white/15 bg-black/70 backdrop-blur-md"
-     >
-       <div className="relative h-14">
-         <a href="/" className="absolute left-5 top-1/2 -translate-y-1/2 flex items-center gap-3">
-           <Image src="/twinlyremove.png" alt="Twinly" width={28} height={28} />
-           <span className="font-semibold">Twinly</span>
-         </a>
-         <div className="absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 items-center gap-8 md:flex">
-           <a href="/pricing" className="hover:opacity-90">Pricing</a>
-           <a href="/enterprise" className="hover:opacity-90">Enterprise</a>
-         </div>
-         <div className="absolute right-5 top-1/2 -translate-y-1/2 flex items-center gap-3">
-         <ShinyLink href="#download">Get Started for Free</ShinyLink>
-         </div>
-       </div>
-     </nav>
-
-
+   <main className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black">
+     <TopNav 
+       active="pricing" 
+       ctaLabel="Download today" 
+       ctaHref="/" 
+     />
+     
+    
      {/* Hero */}
      <header className="mx-auto max-w-6xl px-4 pt-32 text-center">
        <Reveal direction="down">
@@ -238,63 +223,88 @@ export default function PricingPage() {
 
 
      {/* Cards */}
-     <section className="mx-auto mt-10 grid max-w-6xl grid-cols-1 gap-6 px-4 sm:grid-cols-2 lg:grid-cols-3">
-       <Reveal direction="right">
-         <Card>
-           <PlanHeader title="Starter" price={<span>Free</span>} sub="All features (limited)." />
-           
-           <Features
-             items={[
-               '20 emails per month',
-               'Models: GPT-4',
-               'Custom prompts & instructions',
-               'Conversation dashboard & history',
-             ]}
-           />
-         </Card>
-       </Reveal>
+     <section className="py-20">
+       <div className="max-w-6xl mx-auto px-6">
+         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+           <Reveal direction="right">
+             <Card>
+               <PlanHeader title="Starter" price={<span>Free</span>} sub="All features (limited)." />
+               
+               <Features
+                 items={[
+                   '20 emails per month',
+                   'Models: GPT-4',
+                   'Custom prompts & instructions',
+                   'Conversation dashboard & history',
+                 ]}
+               />
+             </Card>
+           </Reveal>
 
+           <Reveal>
+             <Card highlight>
+               <PlanHeader
+                 title="Pro"
+                 price={<span>${proPrice} <span className="text-base font-normal text-white/90">{proSuffix}</span></span>}
+                 badge={billing === 'yearly' ? `Save ${savePct}%` : undefined}
+                 sub="All features. Unlimited usage."
+               />
+               
+               <Features
+                 items={[
+                   'Unlimited emails & responses',
+                   'Models: GPT-5 + latest',
+                   'Unlimited responses / day',
+                   'Standard support',
+                 ]}
+               />
+             </Card>
+           </Reveal>
 
-       <Reveal>
-         <Card highlight>
-           <PlanHeader
-             title="Pro"
-             price={<span>${proPrice} <span className="text-base font-normal text-white/90">{proSuffix}</span></span>}
-             badge={billing === 'yearly' ? `Save ${savePct}%` : undefined}
-             sub="All features. Unlimited usage."
-           />
-           
-           <Features
-             items={[
-               'Unlimited emails & responses',
-               'Models: GPT-5 + latest',
-               'Unlimited responses / day',
-               'Standard support',
-             ]}
-           />
-         </Card>
-       </Reveal>
-
-
-       <Reveal direction="left">
-         <Card id="enterprise">
-           <PlanHeader title="Enterprise" price={<span>Custom</span>} sub="For teams at scale." />
-           <ShinyButton onClick={() => setIsSalesPopupOpen(true)}>Talk to sales</ShinyButton>
-           <Features
-             boldFirst="Everything in Pro, plus…"
-             items={[
-               'Priority support',
-               'Advanced customization & onboarding',
-               'Volume / team discount',
-             ]}
-           />
-         </Card>
-       </Reveal>
+           <Reveal direction="left">
+             <Card id="enterprise">
+               <PlanHeader title="Enterprise" price={<span>Custom</span>} sub="For teams at scale." />
+               <ShinyButton onClick={() => setIsSalesPopupOpen(true)}>Talk to sales</ShinyButton>
+               <Features
+                 boldFirst="Everything in Pro, plus…"
+                 items={[
+                   'Priority support',
+                   'Advanced customization & onboarding',
+                   'Volume / team discount',
+                 ]}
+               />
+             </Card>
+           </Reveal>
+         </div>
+       </div>
      </section>
 
+     {/* Add this after the pricing cards section and before the table */}
+     <section className="py-8">
+       <div className="max-w-4xl mx-auto px-6 text-center">
+         <div className="flex flex-col items-center space-y-2">
+           <p className="text-white/60 text-sm">
+             Scroll down for detailed feature comparison
+           </p>
+           <svg 
+             className="w-4 h-4 text-white/40" 
+             fill="none" 
+             stroke="currentColor" 
+             viewBox="0 0 24 24"
+           >
+             <path 
+               strokeLinecap="round" 
+               strokeLinejoin="round" 
+               strokeWidth={2} 
+               d="M19 14l-7 7m0 0l-7-7m7 7V3" 
+             />
+           </svg>
+         </div>
+       </div>
+     </section>
 
      {/* Comparison Table */}
-     <section className="mt-16 px-4">
+     <section className="py-20">
        <Reveal direction="up">
          <div className="mx-auto w-full max-w-6xl overflow-x-auto rounded-2xl border border-white/15 bg-white/[0.06] shadow-[0_25px_60px_-20px_rgba(0,0,0,.7)]">
            <table className="w-full table-fixed text-sm text-white">

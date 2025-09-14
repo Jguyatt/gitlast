@@ -28,97 +28,71 @@ export async function POST(request: NextRequest) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(data.email)) {
       return NextResponse.json(
-        { error: 'Invalid email address' },
+        { error: 'Invalid email format' },
         { status: 400 }
       );
     }
 
     // Create email content
     const emailContent = `
-New Sales Inquiry from Twinly Website
+New Sales Inquiry from Twinly Website:
 
-Contact Information:
-- Name: ${data.name}
-- Email: ${data.email}
-- Phone: ${data.phone}
-- Company: ${data.company}
-- Company Size: ${data.companySize}
+Name: ${data.name}
+Email: ${data.email}
+Phone: ${data.phone}
+Company: ${data.company}
+Company Size: ${data.companySize}
 
-Submitted at: ${new Date().toLocaleString()}
+Submitted at: ${new Date().toISOString()}
     `;
 
-    // For now, we'll log the data and return success
-    // In production, you would integrate with an email service like:
-    // - SendGrid
-    // - Mailgun
-    // - AWS SES
-    // - Nodemailer with SMTP
+    // Check if email configuration is available
+    const hasEmailConfig = process.env.GMAIL_APP_PASSWORD && process.env.GMAIL_USER;
     
-    console.log('Sales Inquiry Received:', {
-      ...data,
-      timestamp: new Date().toISOString()
-    });
+    if (hasEmailConfig) {
+      // Send email using Nodemailer
+      try {
+        const transporter = nodemailer.createTransport({
+          service: 'gmail',
+          auth: {
+            user: process.env.GMAIL_USER,
+            pass: process.env.GMAIL_APP_PASSWORD,
+          },
+        });
 
-    // Send email using Nodemailer
-    try {
-      // For now, we'll use a simple approach - you can set up Gmail later
-      // This will work with any SMTP service
-      const transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-          user: 'mohid2007zk@gmail.com',
-          pass: process.env.GMAIL_APP_PASSWORD || 'your_app_password_here',
-        },
-      });
+        const mailOptions = {
+          from: process.env.GMAIL_USER,
+          to: 'mohid2007zk@gmail.com',
+          subject: 'New Sales Inquiry - Twinly',
+          text: emailContent,
+          html: `
+            <h2>New Sales Inquiry from Twinly Website</h2>
+            <p><strong>Name:</strong> ${data.name}</p>
+            <p><strong>Email:</strong> ${data.email}</p>
+            <p><strong>Phone:</strong> ${data.phone}</p>
+            <p><strong>Company:</strong> ${data.company}</p>
+            <p><strong>Company Size:</strong> ${data.companySize}</p>
+            <p><strong>Submitted at:</strong> ${new Date().toISOString()}</p>
+          `,
+        };
 
-      const mailOptions = {
-        from: process.env.GMAIL_USER || 'mohid2007zk@gmail.com',
-        to: 'mohid2007zk@gmail.com',
-        subject: 'New Sales Inquiry - Twinly',
-        text: emailContent,
-        html: `
-          <h2>New Sales Inquiry from Twinly Website</h2>
-          <h3>Contact Information:</h3>
-          <ul>
-            <li><strong>Name:</strong> ${data.name}</li>
-            <li><strong>Email:</strong> ${data.email}</li>
-            <li><strong>Phone:</strong> ${data.phone}</li>
-            <li><strong>Company:</strong> ${data.company}</li>
-            <li><strong>Company Size:</strong> ${data.companySize}</li>
-          </ul>
-          <p><strong>Submitted at:</strong> ${new Date().toLocaleString()}</p>
-        `,
-      };
-
-      await transporter.sendMail(mailOptions);
-      console.log('Email sent successfully to mohid2007zk@gmail.com');
-    } catch (emailError) {
-      console.error('Email sending failed:', emailError);
-      // Don't fail the request if email fails, still save to CSV
-    }
-
-    // Save to CSV file
-    const fs = require('fs');
-    const path = require('path');
-    
-    const csvPath = path.join(process.cwd(), 'sales-inquiries.csv');
-    const csvRow = `${data.name},${data.email},${data.phone},${data.company},${data.companySize},${new Date().toISOString()}\n`;
-    
-    try {
-      // Check if file exists, if not create header
-      if (!fs.existsSync(csvPath)) {
-        const header = 'Name,Email,Phone,Company,Company Size,Submitted At\n';
-        fs.writeFileSync(csvPath, header);
+        await transporter.sendMail(mailOptions);
+        console.log('Email sent successfully');
+      } catch (emailError) {
+        console.error('Failed to send email:', emailError);
+        // Don't fail the request if email fails
       }
-      
-      fs.appendFileSync(csvPath, csvRow);
-      console.log('Data saved to CSV file:', csvPath);
-    } catch (error) {
-      console.error('CSV save error:', error);
+    } else {
+      console.log('Email configuration not available, skipping email send');
+      console.log('Sales inquiry data:', emailContent);
     }
 
+    // Always return success response
     return NextResponse.json(
-      { message: 'Sales inquiry submitted successfully' },
+      { 
+        message: 'Sales inquiry submitted successfully',
+        emailSent: hasEmailConfig
+      },
       { status: 200 }
     );
 
